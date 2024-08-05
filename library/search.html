@@ -51,9 +51,26 @@
     <div class="container">
         <h1>書籍搜尋</h1>
         <form>
-            <input type="text" placeholder="輸入書名、作者或ISBN" required>
-            <input type="submit" value="搜尋">
+            <input type="text" id="search-query" placeholder="搜尋書籍">
+            <button onclick="searchBooks()">搜尋</button>
         </form>
     </div>
+
+    <script>
+        // SearchBooks.js
+
+        async function searchBooks() {
+            const query = document.getElementById('search-query').value;
+
+            try {
+                const books = await fetchApi(`books/search?query=${encodeURIComponent(query)}`, 'GET');
+                const resultsDiv = document.getElementById('search-results');
+                resultsDiv.innerHTML = books.map(book => `<p>${book.title} by ${book.author}</p>`).join('');
+            } catch (error) {
+                alert('搜尋失敗');
+            }
+        }
+
+    </script>
 </body>
 </html>

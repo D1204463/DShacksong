@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無人圖書館系統</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+        }
+        button {
+            cursor: pointer;
+        }
+        .results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>無人圖書館系統</h1>
+
+<!-- 自助借書 -->
+<div id="borrow-section">
+    <h2>自助借書</h2>
+    <input type="text" id="borrow-book-id" placeholder="書籍 ID">
+    <input type="text" id="borrow-user-id" placeholder="讀者 ID">
+    <button onclick="borrowBook()">借書</button>
+</div>
+
+<!-- 自助還書 -->
+<div id="return-section">
+    <h2>自助還書</h2>
+    <input type="text" id="return-book-id" placeholder="書籍 ID">
+    <input type="text" id="return-user-id" placeholder="讀者 ID">
+    <button onclick="returnBook()">還書</button>
+</div>
+
+<!-- 書籍搜尋 -->
+<div id="search-section">
+    <h2>書籍搜尋</h2>
+    <input type="text" id="search-query" placeholder="搜尋書籍">
+    <button onclick="searchBooks()">搜尋</button>
+    <div id="search-results" class="results"></div>
+</div>
+
+<!-- 書籍推薦 -->
+<div id="recommend-section">
+    <h2>書籍推薦</h2>
+    <input type="text" id="recommend-user-id" placeholder="讀者 ID">
+    <button onclick="recommendBooks()">獲取推薦</button>
+    <div id="recommend-results" class="results"></div>
+</div>
+
+
+<script src="services/api.js"></script>
+<script src="src/BorrowBook.js"></script>
+<script src="src/ReturnBook.js"></script>
+<script src="src/SearchBooks.js"></script>
+<script src="App.js"></script>
+
+</body>
+</html>
